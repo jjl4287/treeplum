@@ -2312,7 +2312,10 @@
             leaf.setAttribute('y', pt.y - 15);
             leaf.setAttribute('width', 20);
             leaf.setAttribute('height', 30);
-            leaf.setAttribute('transform', `rotate(${Math.random() * 60 - 30} ${pt.x} ${pt.y})`);
+            const rotation = Math.random() * 60 - 30;
+            leaf.dataset.rotation = rotation;
+            leaf.style.transformBox = 'fill-box';
+            leaf.style.transformOrigin = 'center';
             leaf.setAttribute('opacity', '0.8');
             leaves.push(leaf);
           }
@@ -2341,7 +2344,8 @@
           leaves.forEach((leaf, leafIdx) => {
             const leafProgress = Math.max(0, Math.min(1, (adjustedProgress - leafIdx * 0.08) * 2));
             leaf.style.opacity = leafProgress * 0.8;
-            leaf.style.transform = `scale(${leafProgress})`;
+            const rotation = leaf.dataset.rotation || 0;
+            leaf.style.transform = `rotate(${rotation}deg) scale(${leafProgress})`;
           });
         });
       }
