@@ -1,0 +1,74 @@
+:root {
+    --bg-color: #0f0b15;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    font-family: "Georgia", serif; /* More artistic font */
+    touch-action: none; /* We handle touch via scroll container */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Background Canvas */
+#fluid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Mobile Safari optimization */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Scroll Overlay */
+#scroll-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; /* Momentum scrolling */
+    z-index: 10;
+    overscroll-behavior-y: none; /* Prevent bounce if possible */
+}
+
+#scroll-height {
+    height: 5000px; /* Long scroll area */
+}
+
+/* Instructions Overlay */
+#instructions {
+    position: fixed;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    pointer-events: none;
+    z-index: 5;
+    animation: fadeOut 3s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+/* Hide scrollbar */
+#scroll-container::-webkit-scrollbar {
+    display: none;
+}
+#scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
