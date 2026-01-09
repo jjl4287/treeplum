@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1410">
+  <meta name="description" content="A modern art web experience exploring organic chaos through trees, plum blossoms, and fluid motion.">
+  <meta property="og:title" content="Tree Plum · Fluidity">
+  <meta property="og:description" content="An immersive scrolling art experience of organic chaos">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon as inline SVG data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234a1942'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23d4a5c9'/%3E%3Cellipse cx='50' cy='25' rx='10' ry='16' fill='%23f8e1e7' opacity='0.9'/%3E%3Cellipse cx='50' cy='25' rx='10' ry='16' fill='%23f8e1e7' opacity='0.9' transform='rotate(72 50 50)'/%3E%3Cellipse cx='50' cy='25' rx='10' ry='16' fill='%23f8e1e7' opacity='0.9' transform='rotate(144 50 50)'/%3E%3Cellipse cx='50' cy='25' rx='10' ry='16' fill='%23f8e1e7' opacity='0.9' transform='rotate(216 50 50)'/%3E%3Cellipse cx='50' cy='25' rx='10' ry='16' fill='%23f8e1e7' opacity='0.9' transform='rotate(288 50 50)'/%3E%3C/svg%3E">
+  
+  <!-- Apple touch icon -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%234a1942' rx='40'/%3E%3Ccircle cx='90' cy='90' r='12' fill='%23d4a5c9'/%3E%3Cellipse cx='90' cy='55' rx='15' ry='24' fill='%23f8e1e7' opacity='0.9'/%3E%3Cellipse cx='90' cy='55' rx='15' ry='24' fill='%23f8e1e7' opacity='0.9' transform='rotate(72 90 90)'/%3E%3Cellipse cx='90' cy='55' rx='15' ry='24' fill='%23f8e1e7' opacity='0.9' transform='rotate(144 90 90)'/%3E%3Cellipse cx='90' cy='55' rx='15' ry='24' fill='%23f8e1e7' opacity='0.9' transform='rotate(216 90 90)'/%3E%3Cellipse cx='90' cy='55' rx='15' ry='24' fill='%23f8e1e7' opacity='0.9' transform='rotate(288 90 90)'/%3E%3C/svg%3E">
+  
+  <title>Tree Plum · Fluidity</title>
+  
+  <style>
+    /* ══════════════════════════════════════════════════════════════════════════
+       ORGANIC NATURALS COLOR PALETTE
+       ══════════════════════════════════════════════════════════════════════════ */
+    :root {
+      /* Plum spectrum */
+      --plum-deep: #4a1942;
+      --plum-dark: #5c2154;
+      --plum-medium: #7b2d5b;
+      --plum-rich: #8e3a6d;
+      --plum-light: #d4a5c9;
+      --plum-glow: #e8c5df;
+      
+      /* Blossom pinks */
+      --blossom-deep: #c97b9e;
+      --blossom-medium: #e4a8c0;
+      --blossom-light: #f8e1e7;
+      --blossom-white: #fff5f7;
+      --blossom-cream: #fef9f5;
+      
+      /* Bark & wood */
+      --bark-black: #1a0f0a;
+      --bark-dark: #2d1810;
+      --bark-medium: #5c3a2d;
+      --bark-light: #8b6b4a;
+      --bark-highlight: #a88a6a;
+      
+      /* Foliage */
+      --leaf-deep: #0d1f15;
+      --leaf-dark: #1a3a2a;
+      --leaf-medium: #2d5a3d;
+      --leaf-bright: #4a8a5a;
+      --leaf-light: #7ab87a;
+      --leaf-spring: #a5d4a5;
+      
+      /* Earth tones */
+      --earth-black: #0a0908;
+      --earth-dark: #1a1410;
+      --earth-medium: #3d2a1a;
+      --earth-warm: #5a4030;
+      --earth-light: #8a7060;
+      
+      /* Sky gradients */
+      --sky-night: #0a0510;
+      --sky-dusk: #2a1a2d;
+      --sky-twilight: #4a2a4a;
+      --sky-dawn: #f5e6d3;
+      --sky-day: #e8f0f5;
+      
+      /* Water */
+      --water-deep: #1a2a3a;
+      --water-medium: #3a5a6a;
+      --water-light: #7aaaba;
+      --water-shimmer: #a5d5e5;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       BASE RESET & MOBILE SAFARI OPTIMIZATIONS
+       ══════════════════════════════════════════════════════════════════════════ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: var(--earth-dark);
+      color: var(--blossom-cream);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+    }
+    
+    /* Prevent pull-to-refresh but allow scroll */
+    html, body {
+      overscroll-behavior-y: none;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       AUDIO ACTIVATION OVERLAY
+       ══════════════════════════════════════════════════════════════════════════ */
+    #audio-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    
+    #audio-gate .gate-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, var(--plum-deep) 0%, var(--earth-black) 70%);
+      animation: gate-bg-pulse 8s ease-in-out infinite;
+    }
+    
+    @keyframes gate-bg-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    #audio-gate .gate-particles {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20% 30%, rgba(248, 225, 231, 0.3), transparent),
+        radial-gradient(2px 2px at 40% 70%, rgba(212, 165, 201, 0.3), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(248, 225, 231, 0.4), transparent),
+        radial-gradient(2px 2px at 80% 50%, rgba(212, 165, 201, 0.3), transparent),
+        radial-gradient(1px 1px at 10% 80%, rgba(248, 225, 231, 0.4), transparent),
+        radial-gradient(2px 2px at 90% 90%, rgba(212, 165, 201, 0.3), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(248, 225, 231, 0.5), transparent);
+      background-size: 100% 100%;
+      animation: gate-particles-float 20s linear infinite;
+    }
+    
+    @keyframes gate-particles-float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    #audio-gate .gate-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    #audio-gate.hidden {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none;
+    }
+    
+    #audio-gate .gate-blossom {
+      width: 120px;
+      height: 120px;
+      filter: drop-shadow(0 0 20px var(--plum-medium)) drop-shadow(0 0 40px var(--plum-deep));
+      animation: blossom-entrance 3s ease-in-out infinite;
+    }
+    
+    @keyframes blossom-entrance {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+        filter: drop-shadow(0 0 20px var(--plum-medium)) drop-shadow(0 0 40px var(--plum-deep));
+      }
+      50% { 
+        transform: scale(1.05) rotate(3deg); 
+        filter: drop-shadow(0 0 30px var(--plum-light)) drop-shadow(0 0 60px var(--plum-medium));
+      }
+    }
+    
+    #audio-gate .gate-text {
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--blossom-light);
+      opacity: 0.8;
+      animation: fade-text 2s ease-in-out infinite alternate;
+    }
+    
+    #audio-gate .gate-subtext {
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      color: var(--blossom-cream);
+      opacity: 0.4;
+      font-weight: 300;
+      margin-top: -1rem;
+    }
+    
+    @keyframes fade-text {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       MAIN CANVAS LAYERS
+       ══════════════════════════════════════════════════════════════════════════ */
+    #fluid-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    #interaction-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SCROLL CONTAINER
+       ══════════════════════════════════════════════════════════════════════════ */
+    #scroll-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 1300vh; /* 13 screens of scroll journey */
+      pointer-events: auto;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SVG SCENE LAYERS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .scene-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+    
+    .parallax-slow { z-index: 10; }
+    .parallax-medium { z-index: 20; }
+    .parallax-fast { z-index: 30; }
+    .parallax-foreground { z-index: 40; }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       GRADIENT BACKGROUNDS
+       ══════════════════════════════════════════════════════════════════════════ */
+    #gradient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        var(--earth-black) 0%,
+        var(--earth-dark) 10%,
+        var(--sky-dusk) 30%,
+        var(--plum-deep) 50%,
+        var(--leaf-deep) 70%,
+        var(--earth-dark) 90%,
+        var(--earth-black) 100%
+      );
+      background-size: 100% 1300%;
+      background-position: 0% 0%;
+      transition: background-position 0.1s linear;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SVG DEFINITIONS (REUSABLE ELEMENTS)
+       ══════════════════════════════════════════════════════════════════════════ */
+    .svg-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       BLOSSOM ELEMENTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .blossom {
+      position: fixed;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+    
+    .blossom svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       PLUM FRUIT ELEMENTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .plum-fruit {
+      position: fixed;
+      pointer-events: none;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       TREE SILHOUETTES
+       ══════════════════════════════════════════════════════════════════════════ */
+    .tree-silhouette {
+      position: fixed;
+      bottom: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       RIPPLE EFFECTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      border: 2px solid var(--blossom-light);
+      animation: ripple-expand 1.5s ease-out forwards;
+    }
+    
+    @keyframes ripple-expand {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+        transform: translate(-50%, -50%);
+      }
+      100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+      }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SCROLL INDICATOR
+       ══════════════════════════════════════════════════════════════════════════ */
+    #scroll-hint {
+      position: fixed;
+      bottom: env(safe-area-inset-bottom, 20px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      opacity: 0.6;
+      animation: scroll-bounce 2s ease-in-out infinite;
+      transition: opacity 0.5s ease;
+    }
+    
+    #scroll-hint.hidden {
+      opacity: 0;
+    }
+    
+    #scroll-hint svg {
+      width: 30px;
+      height: 40px;
+      fill: none;
+      stroke: var(--blossom-cream);
+      stroke-width: 2;
+    }
+    
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+    
+    #scroll-hint .scroll-text {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       AMBIENT GLOW LAYER
+       ══════════════════════════════════════════════════════════════════════════ */
+    #ambient-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(123, 45, 91, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(74, 25, 66, 0.1), transparent),
+        radial-gradient(ellipse 70% 60% at 30% 80%, rgba(45, 90, 61, 0.08), transparent),
+        radial-gradient(ellipse 50% 50% at 70% 70%, rgba(123, 45, 91, 0.12), transparent);
+      animation: ambient-shift 20s ease-in-out infinite alternate;
+    }
+    
+    @keyframes ambient-shift {
+      0% { 
+        opacity: 0.6;
+        filter: hue-rotate(0deg);
+      }
+      50% {
+        opacity: 0.8;
+        filter: hue-rotate(10deg);
+      }
+      100% { 
+        opacity: 0.6;
+        filter: hue-rotate(-10deg);
+      }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       VIGNETTE EFFECT
+       ══════════════════════════════════════════════════════════════════════════ */
+    #vignette {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      background: radial-gradient(
+        ellipse 70% 60% at center,
+        transparent 0%,
+        transparent 50%,
+        rgba(10, 9, 8, 0.3) 80%,
+        rgba(10, 9, 8, 0.6) 100%
+      );
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       FLOATING ELEMENTS ANIMATIONS
+       ══════════════════════════════════════════════════════════════════════════ */
+    @keyframes float-drift {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(5deg); }
+      50% { transform: translateY(-5px) rotate(-3deg); }
+      75% { transform: translateY(-15px) rotate(3deg); }
+    }
+    
+    @keyframes sway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+    
+    @keyframes gentle-pulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       VINE ANIMATIONS
+       ══════════════════════════════════════════════════════════════════════════ */
+    #vine-container svg path {
+      transition: stroke-dashoffset 0.3s ease-out;
+    }
+    
+    #vine-container svg use {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform-origin: center center;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       WATER EFFECTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    #water-canvas {
+      mix-blend-mode: overlay;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       CHAOS LAYER
+       ══════════════════════════════════════════════════════════════════════════ */
+    #chaos-canvas {
+      mix-blend-mode: screen;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       PHASE OVERLAY TRANSITIONS
+       ══════════════════════════════════════════════════════════════════════════ */
+    #phase-overlay {
+      transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       FLOATING BLOSSOM ENHANCEMENTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .floating-blossom {
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      transition: transform 0.3s ease;
+    }
+    
+    .floating-blossom svg {
+      animation: blossom-spin 20s linear infinite;
+    }
+    
+    @keyframes blossom-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       ORGANIC MORPHING SHAPES
+       ══════════════════════════════════════════════════════════════════════════ */
+    .morph-blob {
+      animation: blob-morph 8s ease-in-out infinite alternate;
+    }
+    
+    @keyframes blob-morph {
+      0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+      100% { border-radius: 40% 60% 60% 40% / 70% 30% 50% 60%; }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SHIMMER EFFECTS
+       ══════════════════════════════════════════════════════════════════════════ */
+    @keyframes shimmer {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.3; }
+    }
+    
+    .shimmer-element {
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       BREATHING GLOW
+       ══════════════════════════════════════════════════════════════════════════ */
+    @keyframes breathe-glow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px var(--plum-light));
+        opacity: 0.8;
+      }
+      50% { 
+        filter: drop-shadow(0 0 20px var(--plum-light)) drop-shadow(0 0 40px var(--blossom-pink));
+        opacity: 1;
+      }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       SWIRL ANIMATION
+       ══════════════════════════════════════════════════════════════════════════ */
+    @keyframes swirl {
+      0% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(90deg) scale(1.1); }
+      50% { transform: rotate(180deg) scale(1); }
+      75% { transform: rotate(270deg) scale(0.9); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       MOBILE SAFARI SPECIFIC FIXES
+       ══════════════════════════════════════════════════════════════════════════ */
+    @supports (-webkit-touch-callout: none) {
+      /* iOS specific optimizations */
+      canvas {
+        /* GPU acceleration for canvas on iOS */
+        transform: translate3d(0, 0, 0);
+      }
+      
+      .scene-layer {
+        /* Prevent flickering on iOS */
+        -webkit-transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    /* ══════════════════════════════════════════════════════════════════════════
+       PERFORMANCE OPTIMIZATIONS
+       ══════════════════════════════════════════════════════════════════════════ */
+    .scene-layer,
+    #fluid-canvas,
+    #particle-canvas,
+    #interaction-canvas,
+    #water-canvas,
+    #chaos-canvas {
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+    
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ════════════════════════════════════════════════════════════════════════
+       AUDIO ACTIVATION GATE
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="audio-gate">
+    <div class="gate-bg"></div>
+    <div class="gate-particles"></div>
+    <div class="gate-content">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="gate-blossom">
+        <!-- Plum blossom icon with animation -->
+        <circle cx="50" cy="50" r="8" fill="#d4a5c9">
+          <animate attributeName="r" values="7;9;7" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <g class="petals">
+          <ellipse cx="50" cy="25" rx="12" ry="18" fill="#f8e1e7" opacity="0.9">
+            <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="50" cy="25" rx="12" ry="18" fill="#f8e1e7" opacity="0.9" transform="rotate(72 50 50)">
+            <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite" begin="0.2s"/>
+          </ellipse>
+          <ellipse cx="50" cy="25" rx="12" ry="18" fill="#f8e1e7" opacity="0.9" transform="rotate(144 50 50)">
+            <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+          </ellipse>
+          <ellipse cx="50" cy="25" rx="12" ry="18" fill="#f8e1e7" opacity="0.9" transform="rotate(216 50 50)">
+            <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite" begin="0.6s"/>
+          </ellipse>
+          <ellipse cx="50" cy="25" rx="12" ry="18" fill="#f8e1e7" opacity="0.9" transform="rotate(288 50 50)">
+            <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite" begin="0.8s"/>
+          </ellipse>
+        </g>
+        <!-- Outer glow ring -->
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#d4a5c9" stroke-width="0.5" opacity="0.3">
+          <animate attributeName="r" values="40;48;40" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#f8e1e7" stroke-width="0.3" opacity="0.2">
+          <animate attributeName="r" values="38;46;38" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+          <animate attributeName="opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+        </circle>
+      </svg>
+      <p class="gate-text">Touch to begin</p>
+      <p class="gate-subtext">Tree Plum · Fluidity</p>
+    </div>
+  </div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SVG DEFINITIONS
+       ════════════════════════════════════════════════════════════════════════ -->
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Gradient for plums -->
+      <radialGradient id="plum-gradient" cx="30%" cy="30%">
+        <stop offset="0%" stop-color="#a855a0"/>
+        <stop offset="50%" stop-color="#7b2d5b"/>
+        <stop offset="100%" stop-color="#4a1942"/>
+      </radialGradient>
+      
+      <!-- Gradient for blossoms -->
+      <radialGradient id="blossom-gradient" cx="50%" cy="50%">
+        <stop offset="0%" stop-color="#fff5f7"/>
+        <stop offset="70%" stop-color="#f8e1e7"/>
+        <stop offset="100%" stop-color="#e4a8c0"/>
+      </radialGradient>
+      
+      <!-- Gradient for leaves -->
+      <linearGradient id="leaf-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4a8a5a"/>
+        <stop offset="100%" stop-color="#1a3a2a"/>
+      </linearGradient>
+      
+      <!-- Bark texture gradient -->
+      <linearGradient id="bark-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#5c3a2d"/>
+        <stop offset="50%" stop-color="#2d1810"/>
+        <stop offset="100%" stop-color="#1a0f0a"/>
+      </linearGradient>
+      
+      <!-- Glow filter -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      
+      <!-- Soft shadow -->
+      <filter id="soft-shadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+      </filter>
+      
+      <!-- Turbulence for organic feel -->
+      <filter id="organic-wobble">
+        <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="2" result="turbulence"/>
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      
+      <!-- Plum blossom symbol -->
+      <symbol id="blossom-5petal" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="6" fill="#d4a5c9"/>
+        <ellipse cx="50" cy="25" rx="10" ry="18" fill="url(#blossom-gradient)"/>
+        <ellipse cx="50" cy="25" rx="10" ry="18" fill="url(#blossom-gradient)" transform="rotate(72 50 50)"/>
+        <ellipse cx="50" cy="25" rx="10" ry="18" fill="url(#blossom-gradient)" transform="rotate(144 50 50)"/>
+        <ellipse cx="50" cy="25" rx="10" ry="18" fill="url(#blossom-gradient)" transform="rotate(216 50 50)"/>
+        <ellipse cx="50" cy="25" rx="10" ry="18" fill="url(#blossom-gradient)" transform="rotate(288 50 50)"/>
+        <!-- Stamen dots -->
+        <circle cx="50" cy="42" r="1.5" fill="#f5d742"/>
+        <circle cx="45" cy="47" r="1.5" fill="#f5d742"/>
+        <circle cx="55" cy="47" r="1.5" fill="#f5d742"/>
+        <circle cx="47" cy="53" r="1.5" fill="#f5d742"/>
+        <circle cx="53" cy="53" r="1.5" fill="#f5d742"/>
+      </symbol>
+      
+      <!-- Single petal for falling -->
+      <symbol id="petal-single" viewBox="0 0 20 30">
+        <ellipse cx="10" cy="15" rx="8" ry="13" fill="url(#blossom-gradient)"/>
+      </symbol>
+      
+      <!-- Plum fruit symbol -->
+      <symbol id="plum-fruit" viewBox="0 0 50 55">
+        <ellipse cx="25" cy="30" rx="20" ry="22" fill="url(#plum-gradient)"/>
+        <!-- Highlight -->
+        <ellipse cx="18" cy="22" rx="6" ry="8" fill="#d4a5c9" opacity="0.4"/>
+        <!-- Stem -->
+        <path d="M25 8 Q28 5 30 2" stroke="#5c3a2d" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Leaf on stem -->
+        <ellipse cx="33" cy="6" rx="6" ry="3" fill="url(#leaf-gradient)" transform="rotate(-30 33 6)"/>
+      </symbol>
+      
+      <!-- Leaf symbol -->
+      <symbol id="leaf" viewBox="0 0 40 60">
+        <path d="M20 0 Q35 20 35 40 Q35 55 20 60 Q5 55 5 40 Q5 20 20 0" fill="url(#leaf-gradient)"/>
+        <path d="M20 5 L20 55" stroke="#1a3a2a" stroke-width="1" opacity="0.5"/>
+        <path d="M20 20 Q12 25 8 30" stroke="#1a3a2a" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M20 20 Q28 25 32 30" stroke="#1a3a2a" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M20 35 Q12 40 8 45" stroke="#1a3a2a" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <path d="M20 35 Q28 40 32 45" stroke="#1a3a2a" stroke-width="0.5" fill="none" opacity="0.3"/>
+      </symbol>
+      
+      <!-- Zen circle / Enso -->
+      <symbol id="enso" viewBox="0 0 100 100">
+        <path d="M50 10 
+                 C75 10 90 25 90 50 
+                 C90 75 75 90 50 90 
+                 C25 90 10 75 10 50 
+                 C10 30 20 15 40 12" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="4" 
+              stroke-linecap="round"
+              opacity="0.6"/>
+      </symbol>
+      
+      <!-- Flowing wave pattern -->
+      <symbol id="wave" viewBox="0 0 200 50">
+        <path d="M0 25 Q25 5 50 25 T100 25 T150 25 T200 25" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2"/>
+      </symbol>
+      
+      <!-- Organic blob -->
+      <symbol id="blob" viewBox="0 0 100 100">
+        <path d="M50 10 
+                 C70 10 90 20 90 40 
+                 C95 60 85 80 65 85 
+                 C45 95 25 85 15 65 
+                 C5 45 15 25 35 15 
+                 C42 12 50 10 50 10 Z"
+              fill="currentColor"/>
+      </symbol>
+      
+      <!-- Branch segment -->
+      <symbol id="branch-segment" viewBox="0 0 100 30">
+        <path d="M0 15 Q25 5 50 15 Q75 25 100 15" 
+              fill="none" 
+              stroke="url(#bark-gradient)" 
+              stroke-width="6" 
+              stroke-linecap="round"/>
+      </symbol>
+      
+      <!-- Cluster of blossoms -->
+      <symbol id="blossom-cluster" viewBox="0 0 80 80">
+        <use href="#blossom-5petal" x="25" y="0" width="30" height="30"/>
+        <use href="#blossom-5petal" x="10" y="20" width="25" height="25"/>
+        <use href="#blossom-5petal" x="40" y="25" width="28" height="28"/>
+        <use href="#blossom-5petal" x="20" y="45" width="22" height="22"/>
+        <use href="#blossom-5petal" x="45" y="50" width="26" height="26"/>
+      </symbol>
+      
+      <!-- Falling petal trail -->
+      <symbol id="petal-trail" viewBox="0 0 30 100">
+        <ellipse cx="15" cy="10" rx="8" ry="6" fill="#f8e1e7" opacity="0.9"/>
+        <ellipse cx="12" cy="30" rx="7" ry="5" fill="#f8e1e7" opacity="0.7"/>
+        <ellipse cx="18" cy="50" rx="6" ry="4" fill="#f8e1e7" opacity="0.5"/>
+        <ellipse cx="14" cy="70" rx="5" ry="3" fill="#f8e1e7" opacity="0.3"/>
+        <ellipse cx="16" cy="90" rx="4" ry="2" fill="#f8e1e7" opacity="0.1"/>
+      </symbol>
+      
+      <!-- Water droplet -->
+      <symbol id="droplet" viewBox="0 0 20 30">
+        <path d="M10 0 Q15 10 15 18 Q15 28 10 28 Q5 28 5 18 Q5 10 10 0 Z" 
+              fill="url(#water-gradient)"/>
+        <ellipse cx="8" cy="12" rx="2" ry="3" fill="rgba(255,255,255,0.4)"/>
+      </symbol>
+      
+      <!-- Water gradient -->
+      <linearGradient id="water-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#a5d5e5"/>
+        <stop offset="100%" stop-color="#7aaaba"/>
+      </linearGradient>
+      
+      <!-- Radial plum glow -->
+      <radialGradient id="plum-glow" cx="50%" cy="50%">
+        <stop offset="0%" stop-color="#d4a5c9" stop-opacity="0.8"/>
+        <stop offset="50%" stop-color="#7b2d5b" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#4a1942" stop-opacity="0"/>
+      </radialGradient>
+      
+      <!-- Animated gradient -->
+      <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#4a1942">
+          <animate attributeName="stop-color" values="#4a1942;#7b2d5b;#d4a5c9;#7b2d5b;#4a1942" dur="8s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="50%" stop-color="#7b2d5b">
+          <animate attributeName="stop-color" values="#7b2d5b;#d4a5c9;#4a1942;#d4a5c9;#7b2d5b" dur="8s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="100%" stop-color="#d4a5c9">
+          <animate attributeName="stop-color" values="#d4a5c9;#4a1942;#7b2d5b;#4a1942;#d4a5c9" dur="8s" repeatCount="indefinite"/>
+        </stop>
+      </linearGradient>
+    </defs>
+  </svg>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       GRADIENT BACKGROUND
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="gradient-bg"></div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       CANVAS LAYERS
+       ════════════════════════════════════════════════════════════════════════ -->
+  <canvas id="fluid-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <canvas id="interaction-canvas"></canvas>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SCROLL CONTAINER (Sets total scroll height)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="scroll-container"></div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SVG SCENE LAYERS (Populated by JS)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="scene-back" class="scene-layer parallax-slow"></div>
+  <div id="scene-mid" class="scene-layer parallax-medium"></div>
+  <div id="scene-front" class="scene-layer parallax-fast"></div>
+  <div id="scene-foreground" class="scene-layer parallax-foreground"></div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SCROLL HINT
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="scroll-hint">
+    <svg viewBox="0 0 30 50">
+      <rect x="5" y="5" width="20" height="35" rx="10" stroke-opacity="0.6"/>
+      <circle cx="15" cy="14" r="3" fill="currentColor" opacity="0.8">
+        <animate attributeName="cy" values="14;26;14" dur="1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"/>
+        <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    <span class="scroll-text">scroll</span>
+  </div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       AMBIENT GLOW LAYER
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="ambient-glow"></div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       VIGNETTE OVERLAY
+       ════════════════════════════════════════════════════════════════════════ -->
+  <div id="vignette"></div>
+  
+  <!-- ════════════════════════════════════════════════════════════════════════
+       MAIN JAVASCRIPT
+       ════════════════════════════════════════════════════════════════════════ -->
+  <script>
+    // ══════════════════════════════════════════════════════════════════════════
+    // CONFIGURATION
+    // ══════════════════════════════════════════════════════════════════════════
+    const CONFIG = {
+      colors: {
+        plumDeep: '#4a1942',
+        plumMedium: '#7b2d5b',
+        plumLight: '#d4a5c9',
+        blossomPink: '#f8e1e7',
+        blossomWhite: '#fff5f7',
+        barkDark: '#2d1810',
+        leafDark: '#1a3a2a',
+        leafMedium: '#2d5a3d',
+        leafLight: '#4a8a5a',
+        earthDark: '#1a1410',
+        waterLight: '#7aaaba'
+      },
+      particles: {
+        maxCount: 150,
+        petals: 60,
+        leaves: 30,
+        plums: 8
+      },
+      fluid: {
+        resolution: 0.5,
+        turbulence: 0.003
+      }
+    };
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // STATE
+    // ══════════════════════════════════════════════════════════════════════════
+    const state = {
+      scrollProgress: 0,
+      scrollY: 0,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+      deviceOrientation: { alpha: 0, beta: 0, gamma: 0 },
+      touches: [],
+      audioStarted: false,
+      time: 0
+    };
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // PERLIN NOISE IMPLEMENTATION
+    // ══════════════════════════════════════════════════════════════════════════
+    class PerlinNoise {
+      constructor() {
+        this.permutation = [];
+        for (let i = 0; i < 256; i++) this.permutation[i] = i;
+        for (let i = 255; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.permutation[i], this.permutation[j]] = [this.permutation[j], this.permutation[i]];
+        }
+        this.p = [...this.permutation, ...this.permutation];
+      }
+      
+      fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+      lerp(a, b, t) { return a + t * (b - a); }
+      grad(hash, x, y, z) {
+        const h = hash & 15;
+        const u = h < 8 ? x : y;
+        const v = h < 4 ? y : h === 12 || h === 14 ? x : z;
+        return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
+      }
+      
+      noise(x, y, z = 0) {
+        const X = Math.floor(x) & 255;
+        const Y = Math.floor(y) & 255;
+        const Z = Math.floor(z) & 255;
+        x -= Math.floor(x);
+        y -= Math.floor(y);
+        z -= Math.floor(z);
+        const u = this.fade(x);
+        const v = this.fade(y);
+        const w = this.fade(z);
+        const A = this.p[X] + Y, AA = this.p[A] + Z, AB = this.p[A + 1] + Z;
+        const B = this.p[X + 1] + Y, BA = this.p[B] + Z, BB = this.p[B + 1] + Z;
+        return this.lerp(
+          this.lerp(
+            this.lerp(this.grad(this.p[AA], x, y, z), this.grad(this.p[BA], x - 1, y, z), u),
+            this.lerp(this.grad(this.p[AB], x, y - 1, z), this.grad(this.p[BB], x - 1, y - 1, z), u),
+            v
+          ),
+          this.lerp(
+            this.lerp(this.grad(this.p[AA + 1], x, y, z - 1), this.grad(this.p[BA + 1], x - 1, y, z - 1), u),
+            this.lerp(this.grad(this.p[AB + 1], x, y - 1, z - 1), this.grad(this.p[BB + 1], x - 1, y - 1, z - 1), u),
+            v
+          ),
+          w
+        );
+      }
+      
+      fbm(x, y, octaves = 4) {
+        let value = 0, amplitude = 1, frequency = 1, maxValue = 0;
+        for (let i = 0; i < octaves; i++) {
+          value += amplitude * this.noise(x * frequency, y * frequency);
+          maxValue += amplitude;
+          amplitude *= 0.5;
+          frequency *= 2;
+        }
+        return value / maxValue;
+      }
+    }
+    
+    const perlin = new PerlinNoise();
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // AUDIO SYSTEM
+    // ══════════════════════════════════════════════════════════════════════════
+    class AmbientAudio {
+      constructor() {
+        this.ctx = null;
+        this.masterGain = null;
+        this.layers = {};
+        this.isPlaying = false;
+      }
+      
+      async init() {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.gain.value = 0.3;
+        this.masterGain.connect(this.ctx.destination);
+        
+        // Create ambient layers
+        this.createWindLayer();
+        this.createWaterLayer();
+        this.createChimeLayer();
+        this.createDroneLayer();
+        
+        this.isPlaying = true;
+      }
+      
+      createWindLayer() {
+        const bufferSize = 2 * this.ctx.sampleRate;
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        noise.loop = true;
+        
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 400;
+        filter.Q.value = 1;
+        
+        const gain = this.ctx.createGain();
+        gain.gain.value = 0.15;
+        
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.masterGain);
+        noise.start();
+        
+        this.layers.wind = { source: noise, filter, gain };
+      }
+      
+      createWaterLayer() {
+        const bufferSize = 2 * this.ctx.sampleRate;
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        noise.loop = true;
+        
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = 800;
+        filter.Q.value = 2;
+        
+        const lfo = this.ctx.createOscillator();
+        lfo.frequency.value = 0.2;
+        const lfoGain = this.ctx.createGain();
+        lfoGain.gain.value = 300;
+        lfo.connect(lfoGain);
+        lfoGain.connect(filter.frequency);
+        lfo.start();
+        
+        const gain = this.ctx.createGain();
+        gain.gain.value = 0.08;
+        
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.masterGain);
+        noise.start();
+        
+        this.layers.water = { source: noise, filter, gain, lfo };
+      }
+      
+      createChimeLayer() {
+        this.layers.chimes = {
+          frequencies: [523.25, 659.25, 783.99, 1046.50, 1318.51], // C5, E5, G5, C6, E6
+          lastPlayed: 0
+        };
+      }
+      
+      playChime() {
+        if (!this.isPlaying) return;
+        const now = this.ctx.currentTime;
+        if (now - this.layers.chimes.lastPlayed < 0.3) return;
+        
+        const freq = this.layers.chimes.frequencies[Math.floor(Math.random() * this.layers.chimes.frequencies.length)];
+        
+        const osc = this.ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialDecayTo && gain.gain.exponentialDecayTo(0.001, now + 2);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.linearRampToValueAtTime(0.001, now + 2);
+        
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+        osc.start(now);
+        osc.stop(now + 2);
+        
+        this.layers.chimes.lastPlayed = now;
+      }
+      
+      createDroneLayer() {
+        const osc1 = this.ctx.createOscillator();
+        const osc2 = this.ctx.createOscillator();
+        const osc3 = this.ctx.createOscillator();
+        
+        osc1.type = 'sine';
+        osc2.type = 'sine';
+        osc3.type = 'triangle';
+        
+        osc1.frequency.value = 65.41; // C2
+        osc2.frequency.value = 98.00; // G2
+        osc3.frequency.value = 130.81; // C3
+        
+        const gain = this.ctx.createGain();
+        gain.gain.value = 0.06;
+        
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 200;
+        
+        osc1.connect(filter);
+        osc2.connect(filter);
+        osc3.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.masterGain);
+        
+        osc1.start();
+        osc2.start();
+        osc3.start();
+        
+        this.layers.drone = { osc1, osc2, osc3, gain, filter };
+      }
+      
+      updateWithScroll(progress) {
+        if (!this.isPlaying) return;
+        
+        // Modulate wind based on scroll
+        if (this.layers.wind) {
+          const windIntensity = 0.1 + Math.sin(progress * Math.PI) * 0.15;
+          this.layers.wind.gain.gain.linearRampToValueAtTime(windIntensity, this.ctx.currentTime + 0.1);
+          this.layers.wind.filter.frequency.linearRampToValueAtTime(300 + progress * 400, this.ctx.currentTime + 0.1);
+        }
+        
+        // Modulate water based on middle section
+        if (this.layers.water) {
+          const waterIntensity = Math.sin(progress * Math.PI * 2) * 0.5 + 0.5;
+          this.layers.water.gain.gain.linearRampToValueAtTime(0.05 + waterIntensity * 0.1, this.ctx.currentTime + 0.1);
+        }
+        
+        // Modulate drone for depth
+        if (this.layers.drone) {
+          const droneIntensity = 0.04 + (1 - Math.abs(progress - 0.5) * 2) * 0.04;
+          this.layers.drone.gain.gain.linearRampToValueAtTime(droneIntensity, this.ctx.currentTime + 0.1);
+        }
+      }
+      
+      playRippleSound() {
+        if (!this.isPlaying) return;
+        const now = this.ctx.currentTime;
+        
+        const osc = this.ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(200, now + 0.5);
+        
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.5);
+        
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+        osc.start(now);
+        osc.stop(now + 0.5);
+      }
+    }
+    
+    const audio = new AmbientAudio();
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // PARTICLE SYSTEM
+    // ══════════════════════════════════════════════════════════════════════════
+    class Particle {
+      constructor(type) {
+        this.type = type;
+        this.reset();
+      }
+      
+      reset() {
+        this.x = Math.random() * state.viewportWidth;
+        this.y = -50 - Math.random() * 200;
+        this.z = Math.random(); // depth
+        this.size = this.type === 'plum' ? 20 + Math.random() * 15 : 
+                    this.type === 'leaf' ? 15 + Math.random() * 10 : 
+                    8 + Math.random() * 12;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 2;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = 0.5 + Math.random() * 1;
+        this.wobbleOffset = Math.random() * Math.PI * 2;
+        this.wobbleSpeed = 0.02 + Math.random() * 0.02;
+        this.opacity = 0.6 + Math.random() * 0.4;
+        this.hueShift = Math.random() * 20 - 10;
+      }
+      
+      update(scrollProgress, gyro) {
+        // Noise-based organic movement
+        const noiseX = perlin.noise(this.x * 0.005, this.y * 0.005, state.time * 0.001);
+        const noiseY = perlin.noise(this.x * 0.005 + 100, this.y * 0.005 + 100, state.time * 0.001);
+        
+        // Gyroscope influence
+        const gyroInfluence = 0.05;
+        const gyroX = (gyro.gamma || 0) * gyroInfluence;
+        const gyroY = (gyro.beta || 0) * gyroInfluence * 0.5;
+        
+        // Scroll-based wind
+        const scrollWind = Math.sin(scrollProgress * Math.PI) * 2;
+        
+        // Update position with organic chaos
+        this.x += this.vx + noiseX * 2 + gyroX + Math.sin(state.time * this.wobbleSpeed + this.wobbleOffset) * 0.5;
+        this.y += this.vy * (0.5 + scrollProgress) + noiseY * 0.5 + gyroY;
+        this.rotation += this.rotationSpeed + noiseX * 2;
+        
+        // Add horizontal drift from scroll
+        this.x += scrollWind * (1 - this.z) * 0.5;
+        
+        // Reset if off screen
+        if (this.y > state.viewportHeight + 100 || 
+            this.x < -100 || 
+            this.x > state.viewportWidth + 100) {
+          this.reset();
+        }
+      }
+    }
+    
+    class ParticleSystem {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.resize();
+      }
+      
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.canvas.width = state.viewportWidth * dpr;
+        this.canvas.height = state.viewportHeight * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+      
+      init() {
+        // Create petals
+        for (let i = 0; i < CONFIG.particles.petals; i++) {
+          const p = new Particle('petal');
+          p.y = Math.random() * state.viewportHeight; // Spread initially
+          this.particles.push(p);
+        }
+        
+        // Create leaves
+        for (let i = 0; i < CONFIG.particles.leaves; i++) {
+          const p = new Particle('leaf');
+          p.y = Math.random() * state.viewportHeight;
+          this.particles.push(p);
+        }
+        
+        // Create plums
+        for (let i = 0; i < CONFIG.particles.plums; i++) {
+          const p = new Particle('plum');
+          p.y = Math.random() * state.viewportHeight;
+          this.particles.push(p);
+        }
+      }
+      
+      update() {
+        this.particles.forEach(p => p.update(state.scrollProgress, state.deviceOrientation));
+      }
+      
+      draw() {
+        this.ctx.clearRect(0, 0, state.viewportWidth, state.viewportHeight);
+        
+        // Sort by depth for proper layering
+        const sorted = [...this.particles].sort((a, b) => a.z - b.z);
+        
+        sorted.forEach(p => {
+          this.ctx.save();
+          this.ctx.translate(p.x, p.y);
+          this.ctx.rotate(p.rotation * Math.PI / 180);
+          this.ctx.globalAlpha = p.opacity * (0.5 + p.z * 0.5);
+          
+          const scale = 0.5 + p.z * 0.5;
+          this.ctx.scale(scale, scale);
+          
+          if (p.type === 'petal') {
+            this.drawPetal(p);
+          } else if (p.type === 'leaf') {
+            this.drawLeaf(p);
+          } else if (p.type === 'plum') {
+            this.drawPlum(p);
+          }
+          
+          this.ctx.restore();
+        });
+      }
+      
+      drawPetal(p) {
+        const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, p.size);
+        gradient.addColorStop(0, '#fff5f7');
+        gradient.addColorStop(0.7, '#f8e1e7');
+        gradient.addColorStop(1, '#e4a8c0');
+        
+        this.ctx.beginPath();
+        this.ctx.ellipse(0, 0, p.size * 0.6, p.size, 0, 0, Math.PI * 2);
+        this.ctx.fillStyle = gradient;
+        this.ctx.fill();
+      }
+      
+      drawLeaf(p) {
+        const gradient = this.ctx.createLinearGradient(-p.size/2, -p.size, p.size/2, p.size);
+        gradient.addColorStop(0, '#4a8a5a');
+        gradient.addColorStop(1, '#1a3a2a');
+        
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, -p.size);
+        this.ctx.quadraticCurveTo(p.size * 0.8, -p.size * 0.3, p.size * 0.5, p.size * 0.5);
+        this.ctx.quadraticCurveTo(0, p.size * 0.8, -p.size * 0.5, p.size * 0.5);
+        this.ctx.quadraticCurveTo(-p.size * 0.8, -p.size * 0.3, 0, -p.size);
+        this.ctx.fillStyle = gradient;
+        this.ctx.fill();
+        
+        // Vein
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, -p.size * 0.8);
+        this.ctx.lineTo(0, p.size * 0.6);
+        this.ctx.strokeStyle = 'rgba(26, 58, 42, 0.5)';
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+      }
+      
+      drawPlum(p) {
+        const gradient = this.ctx.createRadialGradient(-p.size * 0.3, -p.size * 0.3, 0, 0, 0, p.size);
+        gradient.addColorStop(0, '#a855a0');
+        gradient.addColorStop(0.5, '#7b2d5b');
+        gradient.addColorStop(1, '#4a1942');
+        
+        // Main fruit
+        this.ctx.beginPath();
+        this.ctx.ellipse(0, 0, p.size * 0.9, p.size, 0, 0, Math.PI * 2);
+        this.ctx.fillStyle = gradient;
+        this.ctx.shadowColor = 'rgba(0,0,0,0.3)';
+        this.ctx.shadowBlur = 5;
+        this.ctx.shadowOffsetY = 3;
+        this.ctx.fill();
+        this.ctx.shadowColor = 'transparent';
+        
+        // Highlight
+        this.ctx.beginPath();
+        this.ctx.ellipse(-p.size * 0.3, -p.size * 0.3, p.size * 0.25, p.size * 0.35, -0.5, 0, Math.PI * 2);
+        this.ctx.fillStyle = 'rgba(212, 165, 201, 0.4)';
+        this.ctx.fill();
+        
+        // Stem
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, -p.size);
+        this.ctx.quadraticCurveTo(p.size * 0.2, -p.size * 1.3, p.size * 0.3, -p.size * 1.4);
+        this.ctx.strokeStyle = '#5c3a2d';
+        this.ctx.lineWidth = 2;
+        this.ctx.lineCap = 'round';
+        this.ctx.stroke();
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // FLUID SIMULATION
+    // ══════════════════════════════════════════════════════════════════════════
+    class FluidSimulation {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.resize();
+      }
+      
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.canvas.width = state.viewportWidth * dpr * CONFIG.fluid.resolution;
+        this.canvas.height = state.viewportHeight * dpr * CONFIG.fluid.resolution;
+        this.ctx.scale(dpr * CONFIG.fluid.resolution, dpr * CONFIG.fluid.resolution);
+      }
+      
+      draw() {
+        this.ctx.clearRect(0, 0, state.viewportWidth, state.viewportHeight);
+        
+        const time = state.time * 0.0005;
+        const scrollInfluence = state.scrollProgress;
+        
+        // Create fluid flow field visualization
+        const cellSize = 40;
+        const cols = Math.ceil(state.viewportWidth / cellSize) + 1;
+        const rows = Math.ceil(state.viewportHeight / cellSize) + 1;
+        
+        for (let i = 0; i < cols; i++) {
+          for (let j = 0; j < rows; j++) {
+            const x = i * cellSize;
+            const y = j * cellSize;
+            
+            // Multi-octave noise for organic flow
+            const noise1 = perlin.fbm(x * 0.003 + time, y * 0.003 + time * 0.5, 3);
+            const noise2 = perlin.fbm(x * 0.005 + time * 0.7, y * 0.005 - time * 0.3, 2);
+            
+            const angle = noise1 * Math.PI * 2;
+            const magnitude = (noise2 + 1) * 0.5 * 20 * (0.5 + scrollInfluence * 0.5);
+            
+            // Draw flow lines
+            this.ctx.beginPath();
+            this.ctx.moveTo(x, y);
+            this.ctx.lineTo(
+              x + Math.cos(angle) * magnitude,
+              y + Math.sin(angle) * magnitude
+            );
+            
+            const hue = 300 + noise1 * 60; // Plum to pink range
+            const lightness = 30 + noise2 * 30;
+            const alpha = 0.1 + Math.abs(noise1) * 0.15;
+            
+            this.ctx.strokeStyle = `hsla(${hue}, 50%, ${lightness}%, ${alpha})`;
+            this.ctx.lineWidth = 1 + noise2 * 2;
+            this.ctx.lineCap = 'round';
+            this.ctx.stroke();
+          }
+        }
+        
+        // Add flowing curves
+        this.drawFlowingCurves(time, scrollInfluence);
+      }
+      
+      drawFlowingCurves(time, scroll) {
+        const numCurves = 8;
+        
+        for (let c = 0; c < numCurves; c++) {
+          this.ctx.beginPath();
+          
+          const baseY = (c / numCurves) * state.viewportHeight;
+          const offset = c * 1000;
+          
+          for (let x = 0; x <= state.viewportWidth; x += 5) {
+            const noise = perlin.fbm((x + offset) * 0.002 + time, (baseY + offset) * 0.002, 4);
+            const y = baseY + noise * 100 * (1 + scroll);
+            
+            if (x === 0) {
+              this.ctx.moveTo(x, y);
+            } else {
+              this.ctx.lineTo(x, y);
+            }
+          }
+          
+          const gradient = this.ctx.createLinearGradient(0, baseY - 50, 0, baseY + 50);
+          gradient.addColorStop(0, `hsla(${300 + c * 10}, 60%, 40%, 0)`);
+          gradient.addColorStop(0.5, `hsla(${300 + c * 10}, 60%, 40%, ${0.1 + scroll * 0.1})`);
+          gradient.addColorStop(1, `hsla(${300 + c * 10}, 60%, 40%, 0)`);
+          
+          this.ctx.strokeStyle = gradient;
+          this.ctx.lineWidth = 2 + Math.sin(time * 2 + c) * 1;
+          this.ctx.stroke();
+        }
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // INTERACTION SYSTEM
+    // ══════════════════════════════════════════════════════════════════════════
+    class InteractionSystem {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.ripples = [];
+        this.trails = [];
+        this.resize();
+      }
+      
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.canvas.width = state.viewportWidth * dpr;
+        this.canvas.height = state.viewportHeight * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+      
+      addRipple(x, y) {
+        this.ripples.push({
+          x, y,
+          radius: 0,
+          maxRadius: 150 + Math.random() * 50,
+          opacity: 0.8,
+          hue: 300 + Math.random() * 40
+        });
+        
+        // Trigger chime sound
+        audio.playChime();
+        audio.playRippleSound();
+      }
+      
+      addTrailPoint(x, y) {
+        this.trails.push({
+          x, y,
+          age: 0,
+          maxAge: 60,
+          size: 5 + Math.random() * 10
+        });
+        
+        // Limit trail length
+        if (this.trails.length > 50) {
+          this.trails.shift();
+        }
+      }
+      
+      update() {
+        // Update ripples
+        this.ripples = this.ripples.filter(r => {
+          r.radius += 3;
+          r.opacity -= 0.015;
+          return r.opacity > 0;
+        });
+        
+        // Update trails
+        this.trails = this.trails.filter(t => {
+          t.age++;
+          return t.age < t.maxAge;
+        });
+      }
+      
+      draw() {
+        this.ctx.clearRect(0, 0, state.viewportWidth, state.viewportHeight);
+        
+        // Draw ripples
+        this.ripples.forEach(r => {
+          // Multiple rings per ripple
+          for (let i = 0; i < 3; i++) {
+            const ringRadius = r.radius - i * 15;
+            if (ringRadius < 0) continue;
+            
+            this.ctx.beginPath();
+            this.ctx.arc(r.x, r.y, ringRadius, 0, Math.PI * 2);
+            this.ctx.strokeStyle = `hsla(${r.hue}, 70%, 70%, ${r.opacity * (1 - i * 0.3)})`;
+            this.ctx.lineWidth = 2 - i * 0.5;
+            this.ctx.stroke();
+          }
+          
+          // Central glow
+          const gradient = this.ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius * 0.3);
+          gradient.addColorStop(0, `hsla(${r.hue}, 70%, 80%, ${r.opacity * 0.5})`);
+          gradient.addColorStop(1, `hsla(${r.hue}, 70%, 80%, 0)`);
+          this.ctx.fillStyle = gradient;
+          this.ctx.fill();
+        });
+        
+        // Draw trails
+        if (this.trails.length > 1) {
+          this.ctx.beginPath();
+          this.trails.forEach((t, i) => {
+            const progress = t.age / t.maxAge;
+            const opacity = 1 - progress;
+            
+            if (i === 0) {
+              this.ctx.moveTo(t.x, t.y);
+            } else {
+              this.ctx.lineTo(t.x, t.y);
+            }
+          });
+          
+          const gradient = this.ctx.createLinearGradient(
+            this.trails[0]?.x || 0, 
+            this.trails[0]?.y || 0,
+            this.trails[this.trails.length - 1]?.x || 0,
+            this.trails[this.trails.length - 1]?.y || 0
+          );
+          gradient.addColorStop(0, 'rgba(248, 225, 231, 0)');
+          gradient.addColorStop(0.5, 'rgba(248, 225, 231, 0.5)');
+          gradient.addColorStop(1, 'rgba(248, 225, 231, 0.8)');
+          
+          this.ctx.strokeStyle = gradient;
+          this.ctx.lineWidth = 3;
+          this.ctx.lineCap = 'round';
+          this.ctx.lineJoin = 'round';
+          this.ctx.stroke();
+        }
+        
+        // Draw trail particles
+        this.trails.forEach(t => {
+          const progress = t.age / t.maxAge;
+          const opacity = 1 - progress;
+          const size = t.size * (1 - progress * 0.5);
+          
+          this.ctx.beginPath();
+          this.ctx.arc(t.x, t.y, size, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(248, 225, 231, ${opacity * 0.6})`;
+          this.ctx.fill();
+        });
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // SVG SCENE GENERATOR
+    // ══════════════════════════════════════════════════════════════════════════
+    class SceneGenerator {
+      constructor() {
+        this.sceneBack = document.getElementById('scene-back');
+        this.sceneMid = document.getElementById('scene-mid');
+        this.sceneFront = document.getElementById('scene-front');
+        this.sceneForeground = document.getElementById('scene-foreground');
+      }
+      
+      init() {
+        this.createBackgroundTrees();
+        this.createMidgroundElements();
+        this.createForegroundBranches();
+        this.createFloatingBlossoms();
+      }
+      
+      createBackgroundTrees() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${state.viewportWidth} ${state.viewportHeight}`);
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        svg.style.opacity = '0.3';
+        
+        // Create multiple tree silhouettes
+        for (let i = 0; i < 5; i++) {
+          const tree = this.generateTreeSilhouette(
+            state.viewportWidth * (0.1 + i * 0.2),
+            state.viewportHeight,
+            150 + Math.random() * 100,
+            0.6 + Math.random() * 0.4
+          );
+          svg.appendChild(tree);
+        }
+        
+        this.sceneBack.appendChild(svg);
+      }
+      
+      generateTreeSilhouette(x, baseY, height, scale) {
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        group.setAttribute('transform', `translate(${x}, ${baseY}) scale(${scale})`);
+        
+        // Trunk
+        const trunk = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const trunkWidth = 20;
+        let trunkPath = `M${-trunkWidth/2} 0 `;
+        trunkPath += `Q${-trunkWidth/2 - 5} ${-height * 0.3} ${-trunkWidth/3} ${-height * 0.6} `;
+        trunkPath += `L${-trunkWidth/4} ${-height} `;
+        trunkPath += `L${trunkWidth/4} ${-height} `;
+        trunkPath += `Q${trunkWidth/3} ${-height * 0.6} ${trunkWidth/2 + 5} ${-height * 0.3} `;
+        trunkPath += `L${trunkWidth/2} 0 Z`;
+        trunk.setAttribute('d', trunkPath);
+        trunk.setAttribute('fill', '#1a0f0a');
+        group.appendChild(trunk);
+        
+        // Branches
+        const numBranches = 8 + Math.floor(Math.random() * 5);
+        for (let i = 0; i < numBranches; i++) {
+          const branch = this.generateBranch(
+            (Math.random() - 0.5) * trunkWidth * 0.5,
+            -height * (0.3 + Math.random() * 0.6),
+            50 + Math.random() * 80,
+            Math.random() > 0.5 ? 1 : -1
+          );
+          group.appendChild(branch);
+        }
+        
+        // Canopy blobs
+        for (let i = 0; i < 12; i++) {
+          const blob = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+          blob.setAttribute('cx', (Math.random() - 0.5) * 120);
+          blob.setAttribute('cy', -height * (0.5 + Math.random() * 0.4));
+          blob.setAttribute('rx', 30 + Math.random() * 40);
+          blob.setAttribute('ry', 20 + Math.random() * 30);
+          blob.setAttribute('fill', '#0d1f15');
+          blob.setAttribute('opacity', 0.5 + Math.random() * 0.5);
+          group.appendChild(blob);
+        }
+        
+        return group;
+      }
+      
+      generateBranch(startX, startY, length, direction) {
+        const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const endX = startX + length * direction * (0.5 + Math.random() * 0.5);
+        const endY = startY - length * 0.3 * Math.random();
+        const ctrlX = startX + (endX - startX) * 0.5 + (Math.random() - 0.5) * 30;
+        const ctrlY = startY + (endY - startY) * 0.3;
+        
+        branch.setAttribute('d', `M${startX} ${startY} Q${ctrlX} ${ctrlY} ${endX} ${endY}`);
+        branch.setAttribute('stroke', '#1a0f0a');
+        branch.setAttribute('stroke-width', 3 + Math.random() * 4);
+        branch.setAttribute('fill', 'none');
+        branch.setAttribute('stroke-linecap', 'round');
+        
+        return branch;
+      }
+      
+      createMidgroundElements() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${state.viewportWidth} ${state.viewportHeight}`);
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        
+        // Flowing branch with blossoms
+        const branchGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        branchGroup.setAttribute('id', 'main-branch');
+        
+        // Main curving branch
+        const mainBranch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const branchPath = this.generateOrganicBranchPath();
+        mainBranch.setAttribute('d', branchPath);
+        mainBranch.setAttribute('stroke', 'url(#bark-gradient)');
+        mainBranch.setAttribute('stroke-width', '12');
+        mainBranch.setAttribute('fill', 'none');
+        mainBranch.setAttribute('stroke-linecap', 'round');
+        branchGroup.appendChild(mainBranch);
+        
+        // Add blossoms along branch
+        const blossomPositions = this.getPointsAlongPath(branchPath, 15);
+        blossomPositions.forEach((pos, i) => {
+          if (Math.random() > 0.3) {
+            const blossom = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+            blossom.setAttribute('href', '#blossom-5petal');
+            blossom.setAttribute('x', pos.x - 15);
+            blossom.setAttribute('y', pos.y - 15);
+            blossom.setAttribute('width', 30);
+            blossom.setAttribute('height', 30);
+            blossom.setAttribute('class', 'blossom-svg');
+            blossom.style.animation = `gentle-pulse ${2 + Math.random()}s ease-in-out infinite`;
+            blossom.style.animationDelay = `${Math.random() * 2}s`;
+            branchGroup.appendChild(blossom);
+          }
+        });
+        
+        svg.appendChild(branchGroup);
+        this.sceneMid.appendChild(svg);
+      }
+      
+      generateOrganicBranchPath() {
+        const startX = -50;
+        const startY = state.viewportHeight * 0.3;
+        const endX = state.viewportWidth + 50;
+        const endY = state.viewportHeight * 0.4;
+        
+        let path = `M${startX} ${startY} `;
+        
+        // Create organic curve with multiple control points
+        const numSegments = 4;
+        let currentX = startX;
+        let currentY = startY;
+        
+        for (let i = 0; i < numSegments; i++) {
+          const segmentEndX = startX + (endX - startX) * ((i + 1) / numSegments);
+          const segmentEndY = startY + (endY - startY) * ((i + 1) / numSegments) + (Math.random() - 0.5) * 100;
+          
+          const ctrl1X = currentX + (segmentEndX - currentX) * 0.3 + (Math.random() - 0.5) * 50;
+          const ctrl1Y = currentY + (Math.random() - 0.5) * 80;
+          const ctrl2X = currentX + (segmentEndX - currentX) * 0.7 + (Math.random() - 0.5) * 50;
+          const ctrl2Y = segmentEndY + (Math.random() - 0.5) * 80;
+          
+          path += `C${ctrl1X} ${ctrl1Y} ${ctrl2X} ${ctrl2Y} ${segmentEndX} ${segmentEndY} `;
+          
+          currentX = segmentEndX;
+          currentY = segmentEndY;
+        }
+        
+        return path;
+      }
+      
+      getPointsAlongPath(pathD, numPoints) {
+        const tempPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        tempPath.setAttribute('d', pathD);
+        document.body.appendChild(tempPath);
+        
+        const length = tempPath.getTotalLength();
+        const points = [];
+        
+        for (let i = 0; i < numPoints; i++) {
+          const point = tempPath.getPointAtLength((i / numPoints) * length);
+          points.push({ x: point.x, y: point.y });
+        }
+        
+        document.body.removeChild(tempPath);
+        return points;
+      }
+      
+      createForegroundBranches() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${state.viewportWidth} ${state.viewportHeight}`);
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        
+        // Corner branches
+        const corners = [
+          { x: 0, y: 0, angle: 45 },
+          { x: state.viewportWidth, y: 0, angle: 135 },
+          { x: 0, y: state.viewportHeight, angle: -45 },
+          { x: state.viewportWidth, y: state.viewportHeight, angle: -135 }
+        ];
+        
+        corners.forEach((corner, idx) => {
+          const branch = this.createCornerBranch(corner.x, corner.y, corner.angle, idx);
+          svg.appendChild(branch);
+        });
+        
+        this.sceneFront.appendChild(svg);
+      }
+      
+      createCornerBranch(x, y, angle, index) {
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        group.setAttribute('transform', `translate(${x}, ${y}) rotate(${angle})`);
+        group.setAttribute('class', `corner-branch-${index}`);
+        
+        // Main branch stroke
+        const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const length = 100 + Math.random() * 80;
+        branch.setAttribute('d', `M0 0 Q${length * 0.5} ${length * 0.2} ${length} ${length * 0.1}`);
+        branch.setAttribute('stroke', '#2d1810');
+        branch.setAttribute('stroke-width', '8');
+        branch.setAttribute('fill', 'none');
+        branch.setAttribute('stroke-linecap', 'round');
+        group.appendChild(branch);
+        
+        // Sub branches
+        for (let i = 0; i < 3; i++) {
+          const subBranch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const startT = 0.3 + i * 0.25;
+          const startX = length * startT;
+          const startY = length * 0.1 * startT;
+          const subLength = 30 + Math.random() * 20;
+          const subAngle = (Math.random() - 0.5) * 60;
+          
+          subBranch.setAttribute('d', `M${startX} ${startY} l${Math.cos(subAngle * Math.PI/180) * subLength} ${Math.sin(subAngle * Math.PI/180) * subLength}`);
+          subBranch.setAttribute('stroke', '#2d1810');
+          subBranch.setAttribute('stroke-width', '4');
+          subBranch.setAttribute('fill', 'none');
+          subBranch.setAttribute('stroke-linecap', 'round');
+          group.appendChild(subBranch);
+          
+          // Blossoms on sub branches
+          if (Math.random() > 0.3) {
+            const blossom = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+            blossom.setAttribute('href', '#blossom-5petal');
+            const blossomX = startX + Math.cos(subAngle * Math.PI/180) * subLength;
+            const blossomY = startY + Math.sin(subAngle * Math.PI/180) * subLength;
+            blossom.setAttribute('x', blossomX - 12);
+            blossom.setAttribute('y', blossomY - 12);
+            blossom.setAttribute('width', 24);
+            blossom.setAttribute('height', 24);
+            blossom.setAttribute('opacity', '0.9');
+            group.appendChild(blossom);
+          }
+        }
+        
+        // Plum fruits
+        if (Math.random() > 0.5) {
+          const plum = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+          plum.setAttribute('href', '#plum-fruit');
+          plum.setAttribute('x', length * 0.6 - 12);
+          plum.setAttribute('y', length * 0.1 + 10);
+          plum.setAttribute('width', 25);
+          plum.setAttribute('height', 28);
+          group.appendChild(plum);
+        }
+        
+        return group;
+      }
+      
+      createFloatingBlossoms() {
+        // These will be CSS animated SVG elements
+        const container = document.createElement('div');
+        container.id = 'floating-blossoms';
+        container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:35;';
+        
+        // Floating blossoms
+        for (let i = 0; i < 20; i++) {
+          const blossom = document.createElement('div');
+          blossom.className = 'floating-blossom';
+          blossom.innerHTML = `
+            <svg viewBox="0 0 100 100" width="${20 + Math.random() * 20}" height="${20 + Math.random() * 20}">
+              <use href="#blossom-5petal"/>
+            </svg>
+          `;
+          blossom.style.cssText = `
+            position: absolute;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            opacity: ${0.4 + Math.random() * 0.4};
+            animation: float-drift ${8 + Math.random() * 6}s ease-in-out infinite;
+            animation-delay: ${Math.random() * 5}s;
+          `;
+          container.appendChild(blossom);
+        }
+        
+        this.sceneForeground.appendChild(container);
+        
+        // Add zen circles / enso elements
+        this.createZenCircles();
+        
+        // Add organic blobs
+        this.createOrganicBlobs();
+        
+        // Add flowing waves
+        this.createFlowingWaves();
+      }
+      
+      createZenCircles() {
+        const container = document.createElement('div');
+        container.id = 'zen-circles';
+        container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:8;opacity:0.15;';
+        
+        const positions = [
+          { x: 15, y: 20, size: 150, delay: 0 },
+          { x: 75, y: 45, size: 200, delay: 2 },
+          { x: 30, y: 70, size: 120, delay: 4 },
+          { x: 85, y: 85, size: 180, delay: 1 },
+        ];
+        
+        positions.forEach(pos => {
+          const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.style.cssText = `
+            position: absolute;
+            left: ${pos.x}%;
+            top: ${pos.y}%;
+            width: ${pos.size}px;
+            height: ${pos.size}px;
+            transform: translate(-50%, -50%);
+            color: var(--blossom-cream);
+            animation: breathe-glow ${6 + Math.random() * 4}s ease-in-out infinite;
+            animation-delay: ${pos.delay}s;
+          `;
+          svg.setAttribute('viewBox', '0 0 100 100');
+          
+          const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+          use.setAttribute('href', '#enso');
+          svg.appendChild(use);
+          
+          container.appendChild(svg);
+        });
+        
+        document.body.appendChild(container);
+      }
+      
+      createOrganicBlobs() {
+        const container = document.createElement('div');
+        container.id = 'organic-blobs';
+        container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2;';
+        
+        const blobs = [
+          { x: 10, y: 30, size: 300, color: 'var(--plum-deep)', opacity: 0.1 },
+          { x: 80, y: 60, size: 250, color: 'var(--leaf-deep)', opacity: 0.08 },
+          { x: 50, y: 80, size: 400, color: 'var(--plum-dark)', opacity: 0.06 },
+          { x: 20, y: 90, size: 200, color: 'var(--leaf-dark)', opacity: 0.1 },
+        ];
+        
+        blobs.forEach((blob, idx) => {
+          const div = document.createElement('div');
+          div.className = 'morph-blob';
+          div.style.cssText = `
+            position: absolute;
+            left: ${blob.x}%;
+            top: ${blob.y}%;
+            width: ${blob.size}px;
+            height: ${blob.size}px;
+            background: ${blob.color};
+            opacity: ${blob.opacity};
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+            animation-delay: ${idx * 2}s;
+          `;
+          container.appendChild(div);
+        });
+        
+        document.body.appendChild(container);
+      }
+      
+      createFlowingWaves() {
+        const container = document.createElement('div');
+        container.id = 'flowing-waves';
+        container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:7;opacity:0.2;';
+        
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.style.cssText = 'width:100%;height:100%;';
+        svg.setAttribute('viewBox', `0 0 ${state.viewportWidth} ${state.viewportHeight}`);
+        svg.setAttribute('preserveAspectRatio', 'none');
+        
+        // Create multiple flowing wave lines
+        for (let i = 0; i < 8; i++) {
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const y = state.viewportHeight * (0.1 + i * 0.1);
+          
+          let d = `M0 ${y}`;
+          for (let x = 0; x <= state.viewportWidth; x += 50) {
+            const offset = Math.sin(x * 0.01 + i) * 30;
+            d += ` Q${x + 25} ${y + offset} ${x + 50} ${y}`;
+          }
+          
+          path.setAttribute('d', d);
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke', 'url(#flow-gradient)');
+          path.setAttribute('stroke-width', '2');
+          path.setAttribute('opacity', 0.3 + Math.random() * 0.3);
+          
+          // Animate the path
+          const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+          animate.setAttribute('attributeName', 'd');
+          animate.setAttribute('dur', `${8 + i * 2}s`);
+          animate.setAttribute('repeatCount', 'indefinite');
+          
+          // Create morphed versions of the path
+          let d2 = `M0 ${y}`;
+          for (let x = 0; x <= state.viewportWidth; x += 50) {
+            const offset = Math.sin(x * 0.01 + i + Math.PI) * 40;
+            d2 += ` Q${x + 25} ${y + offset} ${x + 50} ${y}`;
+          }
+          
+          animate.setAttribute('values', `${d};${d2};${d}`);
+          path.appendChild(animate);
+          
+          svg.appendChild(path);
+        }
+        
+        container.appendChild(svg);
+        document.body.appendChild(container);
+      }
+      
+      updateParallax(scrollProgress, gyro) {
+        const gyroX = (gyro.gamma || 0) * 0.5;
+        const gyroY = (gyro.beta || 0) * 0.3;
+        
+        // Back layer - slowest parallax
+        if (this.sceneBack) {
+          const y = scrollProgress * -100;
+          this.sceneBack.style.transform = `translate3d(${gyroX * 0.2}px, ${y + gyroY * 0.2}px, 0)`;
+          this.sceneBack.style.opacity = Math.max(0.2, 0.4 - scrollProgress * 0.3);
+        }
+        
+        // Mid layer
+        if (this.sceneMid) {
+          const y = scrollProgress * -200;
+          this.sceneMid.style.transform = `translate3d(${gyroX * 0.5}px, ${y + gyroY * 0.5}px, 0)`;
+          
+          // Fade in/out based on scroll position
+          const midOpacity = Math.sin(scrollProgress * Math.PI);
+          this.sceneMid.style.opacity = 0.3 + midOpacity * 0.7;
+        }
+        
+        // Front layer - fastest parallax
+        if (this.sceneFront) {
+          const y = scrollProgress * -300;
+          this.sceneFront.style.transform = `translate3d(${gyroX}px, ${y + gyroY}px, 0)`;
+        }
+        
+        // Foreground
+        if (this.sceneForeground) {
+          const y = scrollProgress * -50;
+          this.sceneForeground.style.transform = `translate3d(${gyroX * 1.5}px, ${y + gyroY * 1.5}px, 0)`;
+        }
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // MAIN APPLICATION
+    // ══════════════════════════════════════════════════════════════════════════
+    class FluidityApp {
+      constructor() {
+        this.fluidCanvas = document.getElementById('fluid-canvas');
+        this.particleCanvas = document.getElementById('particle-canvas');
+        this.interactionCanvas = document.getElementById('interaction-canvas');
+        this.gradientBg = document.getElementById('gradient-bg');
+        this.scrollHint = document.getElementById('scroll-hint');
+        this.audioGate = document.getElementById('audio-gate');
+        
+        this.fluid = new FluidSimulation(this.fluidCanvas);
+        this.particles = new ParticleSystem(this.particleCanvas);
+        this.interactions = new InteractionSystem(this.interactionCanvas);
+        this.scene = new SceneGenerator();
+        
+        this.lastTime = 0;
+        this.isRunning = false;
+      }
+      
+      async init() {
+        this.bindEvents();
+        this.particles.init();
+        this.scene.init();
+        
+        // Wait for audio gate interaction
+        this.audioGate.addEventListener('click', async () => {
+          await audio.init();
+          this.audioGate.classList.add('hidden');
+          setTimeout(() => {
+            this.audioGate.style.display = 'none';
+          }, 1500);
+        });
+        
+        this.isRunning = true;
+        this.animate(0);
+      }
+      
+      bindEvents() {
+        // Scroll
+        window.addEventListener('scroll', () => {
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          state.scrollY = window.scrollY;
+          state.scrollProgress = Math.min(1, state.scrollY / maxScroll);
+          
+          // Update gradient background position
+          this.gradientBg.style.backgroundPosition = `0% ${state.scrollProgress * 100}%`;
+          
+          // Hide scroll hint after scrolling
+          if (state.scrollProgress > 0.05) {
+            this.scrollHint.classList.add('hidden');
+          } else {
+            this.scrollHint.classList.remove('hidden');
+          }
+          
+          // Update audio with scroll
+          audio.updateWithScroll(state.scrollProgress);
+        }, { passive: true });
+        
+        // Resize
+        window.addEventListener('resize', () => {
+          state.viewportWidth = window.innerWidth;
+          state.viewportHeight = window.innerHeight;
+          this.fluid.resize();
+          this.particles.resize();
+          this.interactions.resize();
+        });
+        
+        // Touch interactions
+        window.addEventListener('touchstart', (e) => {
+          Array.from(e.touches).forEach(touch => {
+            this.interactions.addRipple(touch.clientX, touch.clientY);
+          });
+        }, { passive: true });
+        
+        window.addEventListener('touchmove', (e) => {
+          Array.from(e.touches).forEach(touch => {
+            this.interactions.addTrailPoint(touch.clientX, touch.clientY);
+          });
+        }, { passive: true });
+        
+        // Mouse fallback for testing
+        window.addEventListener('click', (e) => {
+          this.interactions.addRipple(e.clientX, e.clientY);
+        });
+        
+        window.addEventListener('mousemove', (e) => {
+          if (e.buttons === 1) {
+            this.interactions.addTrailPoint(e.clientX, e.clientY);
+          }
+        });
+        
+        // Device orientation (gyroscope)
+        if (window.DeviceOrientationEvent) {
+          // Request permission for iOS 13+
+          if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            this.audioGate.addEventListener('click', async () => {
+              try {
+                const permission = await DeviceOrientationEvent.requestPermission();
+                if (permission === 'granted') {
+                  this.enableGyroscope();
+                }
+              } catch (e) {
+                console.log('Gyroscope permission denied');
+              }
+            }, { once: true });
+          } else {
+            this.enableGyroscope();
+          }
+        }
+      }
+      
+      enableGyroscope() {
+        window.addEventListener('deviceorientation', (e) => {
+          state.deviceOrientation = {
+            alpha: e.alpha || 0,
+            beta: e.beta || 0,
+            gamma: e.gamma || 0
+          };
+        }, { passive: true });
+      }
+      
+      animate(timestamp) {
+        if (!this.isRunning) return;
+        
+        const deltaTime = timestamp - this.lastTime;
+        this.lastTime = timestamp;
+        state.time = timestamp;
+        
+        // Update systems
+        this.fluid.draw();
+        this.particles.update();
+        this.particles.draw();
+        this.interactions.update();
+        this.interactions.draw();
+        this.scene.updateParallax(state.scrollProgress, state.deviceOrientation);
+        
+        requestAnimationFrame((t) => this.animate(t));
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // ORGANIC VINES SYSTEM
+    // ══════════════════════════════════════════════════════════════════════════
+    class VineSystem {
+      constructor() {
+        this.vines = [];
+        this.container = document.createElement('div');
+        this.container.id = 'vine-container';
+        this.container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:25;overflow:hidden;';
+        document.body.appendChild(this.container);
+      }
+      
+      init() {
+        // Create vines from edges
+        const edgeVines = [
+          { startX: 0, startY: state.viewportHeight * 0.2, dirX: 1, dirY: 0.3 },
+          { startX: state.viewportWidth, startY: state.viewportHeight * 0.4, dirX: -1, dirY: 0.2 },
+          { startX: 0, startY: state.viewportHeight * 0.7, dirX: 1, dirY: -0.2 },
+          { startX: state.viewportWidth, startY: state.viewportHeight * 0.85, dirX: -1, dirY: -0.3 },
+        ];
+        
+        edgeVines.forEach((config, idx) => {
+          const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+          svg.setAttribute('viewBox', `0 0 ${state.viewportWidth} ${state.viewportHeight}`);
+          
+          const vine = this.createVinePath(config, idx);
+          svg.appendChild(vine.path);
+          vine.leaves.forEach(leaf => svg.appendChild(leaf));
+          
+          this.container.appendChild(svg);
+          this.vines.push({ svg, config, pathLength: vine.pathLength });
+        });
+      }
+      
+      createVinePath(config, index) {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const leaves = [];
+        
+        let d = `M${config.startX} ${config.startY}`;
+        let x = config.startX;
+        let y = config.startY;
+        const segments = 12;
+        const segmentLength = (state.viewportWidth * 0.4) / segments;
+        
+        const points = [{x, y}];
+        
+        for (let i = 0; i < segments; i++) {
+          const noise = perlin.noise(i * 0.5 + index, index * 10) * 60;
+          const newX = x + config.dirX * segmentLength;
+          const newY = y + config.dirY * segmentLength + noise;
+          
+          const ctrlX = x + config.dirX * segmentLength * 0.5 + (Math.random() - 0.5) * 40;
+          const ctrlY = y + config.dirY * segmentLength * 0.5 + (Math.random() - 0.5) * 50;
+          
+          d += ` Q${ctrlX} ${ctrlY} ${newX} ${newY}`;
+          points.push({x: newX, y: newY});
+          x = newX;
+          y = newY;
+        }
+        
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', 'url(#leaf-gradient)');
+        path.setAttribute('stroke-width', '4');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('opacity', '0.7');
+        
+        // Add leaves along the vine
+        points.forEach((pt, i) => {
+          if (i > 0 && i % 2 === 0) {
+            const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+            leaf.setAttribute('href', '#leaf');
+            leaf.setAttribute('x', pt.x - 10);
+            leaf.setAttribute('y', pt.y - 15);
+            leaf.setAttribute('width', 20);
+            leaf.setAttribute('height', 30);
+            leaf.setAttribute('transform', `rotate(${Math.random() * 60 - 30} ${pt.x} ${pt.y})`);
+            leaf.setAttribute('opacity', '0.8');
+            leaves.push(leaf);
+          }
+        });
+        
+        // Animate the path drawing
+        const pathLength = path.getTotalLength ? path.getTotalLength() : 1000;
+        path.style.strokeDasharray = pathLength;
+        path.style.strokeDashoffset = pathLength;
+        
+        return { path, leaves, pathLength };
+      }
+      
+      update(scrollProgress) {
+        this.vines.forEach((vine, idx) => {
+          const offset = idx * 0.1;
+          const adjustedProgress = Math.max(0, Math.min(1, (scrollProgress - offset) * 1.5));
+          
+          const path = vine.svg.querySelector('path');
+          if (path) {
+            path.style.strokeDashoffset = vine.pathLength * (1 - adjustedProgress);
+          }
+          
+          // Fade in leaves
+          const leaves = vine.svg.querySelectorAll('use');
+          leaves.forEach((leaf, leafIdx) => {
+            const leafProgress = Math.max(0, Math.min(1, (adjustedProgress - leafIdx * 0.08) * 2));
+            leaf.style.opacity = leafProgress * 0.8;
+            leaf.style.transform = `scale(${leafProgress})`;
+          });
+        });
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // WATER STREAM EFFECT
+    // ══════════════════════════════════════════════════════════════════════════
+    class WaterStream {
+      constructor() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.id = 'water-canvas';
+        this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:4;opacity:0.6;';
+        document.body.appendChild(this.canvas);
+        this.ctx = this.canvas.getContext('2d');
+        this.drops = [];
+        this.resize();
+      }
+      
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.canvas.width = state.viewportWidth * dpr;
+        this.canvas.height = state.viewportHeight * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+      
+      init() {
+        // Create water drops
+        for (let i = 0; i < 100; i++) {
+          this.drops.push({
+            x: Math.random() * state.viewportWidth,
+            y: Math.random() * state.viewportHeight,
+            size: 2 + Math.random() * 4,
+            speed: 1 + Math.random() * 3,
+            wobble: Math.random() * Math.PI * 2,
+            opacity: 0.3 + Math.random() * 0.5
+          });
+        }
+      }
+      
+      update(scrollProgress, gyro) {
+        const gyroX = (gyro.gamma || 0) * 0.1;
+        
+        this.drops.forEach(drop => {
+          drop.y += drop.speed * (0.5 + scrollProgress);
+          drop.x += Math.sin(drop.wobble + state.time * 0.002) * 0.5 + gyroX;
+          drop.wobble += 0.02;
+          
+          if (drop.y > state.viewportHeight + 20) {
+            drop.y = -20;
+            drop.x = Math.random() * state.viewportWidth;
+          }
+          if (drop.x < -20) drop.x = state.viewportWidth + 20;
+          if (drop.x > state.viewportWidth + 20) drop.x = -20;
+        });
+      }
+      
+      draw(scrollProgress) {
+        this.ctx.clearRect(0, 0, state.viewportWidth, state.viewportHeight);
+        
+        // Only show water in certain scroll phases
+        const waterIntensity = Math.sin(scrollProgress * Math.PI * 2) * 0.5 + 0.5;
+        if (waterIntensity < 0.1) return;
+        
+        this.drops.forEach(drop => {
+          const gradient = this.ctx.createRadialGradient(
+            drop.x, drop.y, 0,
+            drop.x, drop.y, drop.size
+          );
+          gradient.addColorStop(0, `rgba(122, 170, 186, ${drop.opacity * waterIntensity})`);
+          gradient.addColorStop(0.5, `rgba(165, 213, 229, ${drop.opacity * waterIntensity * 0.5})`);
+          gradient.addColorStop(1, 'rgba(165, 213, 229, 0)');
+          
+          this.ctx.beginPath();
+          this.ctx.ellipse(drop.x, drop.y, drop.size * 0.6, drop.size, 0, 0, Math.PI * 2);
+          this.ctx.fillStyle = gradient;
+          this.ctx.fill();
+        });
+        
+        // Draw flowing streams
+        this.drawStreams(scrollProgress, waterIntensity);
+      }
+      
+      drawStreams(scrollProgress, intensity) {
+        const numStreams = 5;
+        
+        for (let s = 0; s < numStreams; s++) {
+          this.ctx.beginPath();
+          
+          const baseX = (s / numStreams) * state.viewportWidth + state.viewportWidth * 0.1;
+          
+          for (let y = 0; y < state.viewportHeight; y += 3) {
+            const noise = perlin.noise(baseX * 0.01, y * 0.005 + state.time * 0.001, s);
+            const x = baseX + noise * 50;
+            
+            if (y === 0) {
+              this.ctx.moveTo(x, y);
+            } else {
+              this.ctx.lineTo(x, y);
+            }
+          }
+          
+          this.ctx.strokeStyle = `rgba(122, 170, 186, ${0.1 * intensity})`;
+          this.ctx.lineWidth = 2 + Math.sin(state.time * 0.001 + s) * 1;
+          this.ctx.stroke();
+        }
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // SCROLL PHASE MANAGER
+    // ══════════════════════════════════════════════════════════════════════════
+    class ScrollPhaseManager {
+      constructor() {
+        this.phases = [
+          { name: 'awakening', start: 0, end: 0.1, colors: ['#0a0908', '#1a1410'] },
+          { name: 'roots', start: 0.1, end: 0.2, colors: ['#1a1410', '#2d1810'] },
+          { name: 'growth', start: 0.2, end: 0.35, colors: ['#2d1810', '#1a3a2a'] },
+          { name: 'bloom', start: 0.35, end: 0.5, colors: ['#1a3a2a', '#4a1942'] },
+          { name: 'peak-chaos', start: 0.5, end: 0.65, colors: ['#4a1942', '#7b2d5b'] },
+          { name: 'fruit', start: 0.65, end: 0.8, colors: ['#7b2d5b', '#5c2154'] },
+          { name: 'descent', start: 0.8, end: 0.9, colors: ['#5c2154', '#2a1a2d'] },
+          { name: 'return', start: 0.9, end: 1, colors: ['#2a1a2d', '#0a0908'] }
+        ];
+        
+        this.currentPhase = null;
+        this.overlay = document.createElement('div');
+        this.overlay.id = 'phase-overlay';
+        this.overlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;transition:background 0.5s ease;';
+        document.body.insertBefore(this.overlay, document.body.firstChild);
+      }
+      
+      update(progress) {
+        let currentPhase = this.phases[0];
+        
+        for (const phase of this.phases) {
+          if (progress >= phase.start && progress < phase.end) {
+            currentPhase = phase;
+            break;
+          }
+        }
+        
+        if (progress >= this.phases[this.phases.length - 1].start) {
+          currentPhase = this.phases[this.phases.length - 1];
+        }
+        
+        // Interpolate colors within phase
+        const phaseProgress = (progress - currentPhase.start) / (currentPhase.end - currentPhase.start);
+        
+        this.overlay.style.background = `linear-gradient(180deg, 
+          ${currentPhase.colors[0]} 0%, 
+          ${this.lerpColor(currentPhase.colors[0], currentPhase.colors[1], phaseProgress)} 50%,
+          ${currentPhase.colors[1]} 100%
+        )`;
+        
+        this.currentPhase = currentPhase;
+        return currentPhase;
+      }
+      
+      lerpColor(color1, color2, t) {
+        const c1 = this.hexToRgb(color1);
+        const c2 = this.hexToRgb(color2);
+        
+        const r = Math.round(c1.r + (c2.r - c1.r) * t);
+        const g = Math.round(c1.g + (c2.g - c1.g) * t);
+        const b = Math.round(c1.b + (c2.b - c1.b) * t);
+        
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+      
+      hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // CHAOS BURST SYSTEM (for peak chaos section)
+    // ══════════════════════════════════════════════════════════════════════════
+    class ChaosBurst {
+      constructor() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.id = 'chaos-canvas';
+        this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:6;mix-blend-mode:screen;';
+        document.body.appendChild(this.canvas);
+        this.ctx = this.canvas.getContext('2d');
+        this.bursts = [];
+        this.resize();
+      }
+      
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        this.canvas.width = state.viewportWidth * dpr;
+        this.canvas.height = state.viewportHeight * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+      
+      addBurst(x, y) {
+        const numParticles = 30 + Math.random() * 20;
+        for (let i = 0; i < numParticles; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2 + Math.random() * 8;
+          const hue = 300 + Math.random() * 60;
+          
+          this.bursts.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            size: 3 + Math.random() * 6,
+            life: 1,
+            decay: 0.015 + Math.random() * 0.01,
+            hue,
+            type: Math.random() > 0.5 ? 'petal' : 'spark'
+          });
+        }
+      }
+      
+      update() {
+        this.bursts = this.bursts.filter(b => {
+          b.x += b.vx;
+          b.y += b.vy;
+          b.vy += 0.1; // gravity
+          b.vx *= 0.99;
+          b.life -= b.decay;
+          b.size *= 0.98;
+          return b.life > 0;
+        });
+      }
+      
+      draw(scrollProgress) {
+        this.ctx.clearRect(0, 0, state.viewportWidth, state.viewportHeight);
+        
+        // Auto-spawn during peak chaos
+        if (scrollProgress > 0.45 && scrollProgress < 0.7) {
+          if (Math.random() < 0.03) {
+            this.addBurst(
+              Math.random() * state.viewportWidth,
+              Math.random() * state.viewportHeight
+            );
+          }
+        }
+        
+        this.bursts.forEach(b => {
+          this.ctx.save();
+          this.ctx.translate(b.x, b.y);
+          this.ctx.globalAlpha = b.life;
+          
+          if (b.type === 'petal') {
+            const gradient = this.ctx.createRadialGradient(0, 0, 0, 0, 0, b.size);
+            gradient.addColorStop(0, `hsla(${b.hue}, 80%, 80%, 1)`);
+            gradient.addColorStop(1, `hsla(${b.hue}, 80%, 60%, 0)`);
+            
+            this.ctx.beginPath();
+            this.ctx.ellipse(0, 0, b.size * 0.6, b.size, b.life * 10, 0, Math.PI * 2);
+            this.ctx.fillStyle = gradient;
+            this.ctx.fill();
+          } else {
+            this.ctx.beginPath();
+            this.ctx.arc(0, 0, b.size * 0.5, 0, Math.PI * 2);
+            this.ctx.fillStyle = `hsla(${b.hue}, 100%, 70%, 1)`;
+            this.ctx.shadowColor = `hsla(${b.hue}, 100%, 70%, 0.8)`;
+            this.ctx.shadowBlur = 10;
+            this.ctx.fill();
+          }
+          
+          this.ctx.restore();
+        });
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // ENHANCED FLUIDITY APP
+    // ══════════════════════════════════════════════════════════════════════════
+    class FluidityAppEnhanced extends FluidityApp {
+      constructor() {
+        super();
+        this.vines = new VineSystem();
+        this.water = new WaterStream();
+        this.phases = new ScrollPhaseManager();
+        this.chaos = new ChaosBurst();
+      }
+      
+      async init() {
+        this.bindEvents();
+        this.particles.init();
+        this.scene.init();
+        this.vines.init();
+        this.water.init();
+        
+        // Audio gate
+        this.audioGate.addEventListener('click', async () => {
+          await audio.init();
+          this.audioGate.classList.add('hidden');
+          setTimeout(() => {
+            this.audioGate.style.display = 'none';
+          }, 1500);
+        });
+        
+        this.isRunning = true;
+        this.animate(0);
+      }
+      
+      bindEvents() {
+        super.bindEvents();
+        
+        // Enhanced touch - trigger chaos bursts
+        window.addEventListener('touchstart', (e) => {
+          Array.from(e.touches).forEach(touch => {
+            if (state.scrollProgress > 0.4 && state.scrollProgress < 0.75) {
+              this.chaos.addBurst(touch.clientX, touch.clientY);
+            }
+          });
+        }, { passive: true });
+        
+        window.addEventListener('click', (e) => {
+          if (state.scrollProgress > 0.4 && state.scrollProgress < 0.75) {
+            this.chaos.addBurst(e.clientX, e.clientY);
+          }
+        });
+        
+        // Resize handlers for new systems
+        window.addEventListener('resize', () => {
+          this.water.resize();
+          this.chaos.resize();
+        });
+      }
+      
+      animate(timestamp) {
+        if (!this.isRunning) return;
+        
+        const deltaTime = timestamp - this.lastTime;
+        this.lastTime = timestamp;
+        state.time = timestamp;
+        
+        // Update phase
+        const currentPhase = this.phases.update(state.scrollProgress);
+        
+        // Update all systems
+        this.fluid.draw();
+        this.particles.update();
+        this.particles.draw();
+        this.interactions.update();
+        this.interactions.draw();
+        this.scene.updateParallax(state.scrollProgress, state.deviceOrientation);
+        this.vines.update(state.scrollProgress);
+        this.water.update(state.scrollProgress, state.deviceOrientation);
+        this.water.draw(state.scrollProgress);
+        this.chaos.update();
+        this.chaos.draw(state.scrollProgress);
+        
+        requestAnimationFrame((t) => this.animate(t));
+      }
+    }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // INITIALIZE ENHANCED APP
+    // ══════════════════════════════════════════════════════════════════════════
+    const app = new FluidityAppEnhanced();
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => app.init());
+    } else {
+      app.init();
+    }
+  </script>
+</body>
+</html>
