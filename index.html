@@ -943,7 +943,8 @@
       deviceOrientation: { alpha: 0, beta: 0, gamma: 0 },
       touches: [],
       audioStarted: false,
-      time: 0
+      time: 0,
+      touchedRecently: false
     };
     
     // ══════════════════════════════════════════════════════════════════════════
@@ -2164,9 +2165,15 @@
         
         // Touch interactions
         window.addEventListener('touchstart', (e) => {
+          state.touchedRecently = true;
           Array.from(e.touches).forEach(touch => {
             this.interactions.addRipple(touch.clientX, touch.clientY);
           });
+        }, { passive: true });
+        
+        window.addEventListener('touchend', () => {
+          // Reset flag after click event would have fired
+          setTimeout(() => { state.touchedRecently = false; }, 300);
         }, { passive: true });
         
         window.addEventListener('touchmove', (e) => {
@@ -2175,8 +2182,9 @@
           });
         }, { passive: true });
         
-        // Mouse fallback for testing
+        // Mouse fallback for desktop (skip if touch event just fired)
         window.addEventListener('click', (e) => {
+          if (state.touchedRecently) return;
           this.interactions.addRipple(e.clientX, e.clientY);
         });
         
@@ -2664,7 +2672,9 @@
           });
         }, { passive: true });
         
+        // Mouse fallback for desktop (skip if touch event just fired)
         window.addEventListener('click', (e) => {
+          if (state.touchedRecently) return;
           if (state.scrollProgress > 0.4 && state.scrollProgress < 0.75) {
             this.chaos.addBurst(e.clientX, e.clientY);
           }
