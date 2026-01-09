@@ -1122,9 +1122,7 @@
         
         const gain = this.ctx.createGain();
         gain.gain.setValueAtTime(0.1, now);
-        gain.gain.exponentialDecayTo && gain.gain.exponentialDecayTo(0.001, now + 2);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.linearRampToValueAtTime(0.001, now + 2);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 2);
         
         osc.connect(gain);
         gain.connect(this.masterGain);
